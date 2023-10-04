@@ -1,9 +1,2 @@
-import React from "react";
-
-const Services = () => {
-    return(
-        <div></div>
-    )
-}
-
-export default Services
+import images from "@/Images/index";
+import Image from "next/image";
