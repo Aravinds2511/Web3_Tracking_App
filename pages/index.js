@@ -1,4 +1,12 @@
-import { Form, Profile, Services, Table } from "@/Components";
+import {
+  CompleteShipment,
+  Form,
+  GetShipment,
+  Profile,
+  Services,
+  StartShipment,
+  Table,
+} from "@/Components";
 import { TrackingContext } from "@/Context/Tracking";
 import React, { useContext, useEffect, useState } from "react";
 
@@ -53,6 +61,23 @@ const index = () => {
         currentUser={currentUser}
         getShipmentCount={getShipmentCount}
       />
+      <CompleteShipment
+        completeModal={completeModal}
+        setCompleteModal={setCompleteModal}
+        completeShipment={completeShipment}
+      />
+      <GetShipment
+        getModal={getModal}
+        setGetModal={setGetModal}
+        getShipment={getShipment}
+      />
+      <StartShipment
+        startModal={startModal}
+        setStartModal={setStartModal}
+        startShipment={startShipment}
+      />
     </>
   );
 };
+
+export default index;
