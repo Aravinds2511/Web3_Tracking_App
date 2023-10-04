@@ -1,7 +1,58 @@
-import React from "react";
+import { Form, Profile, Services, Table } from "@/Components";
+import { TrackingContext } from "@/Context/Tracking";
+import React, { useContext, useEffect, useState } from "react";
 
 const index = () => {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
-};
+  const {
+    currentUser,
+    createShipment,
+    getAllShipment,
+    completeShipment,
+    getShipment,
+    startShipment,
+    getShipmentCount,
+  } = useContext(TrackingContext);
 
-export default index;
+  const [createShipmentModel, setCreateShipmentModel] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
+  const [startModal, setStartModal] = useState(false);
+  const [completeModal, setCompleteModal] = useState(false);
+  const [getModal, setGetModal] = useState(false);
+
+  const [allShipmentsdata, setAllShipmentsdata] = useState(false);
+
+  useEffect(() => {
+    const getCampaignsData = getAllShipment();
+
+    return async () => {
+      const allData = await getCampaignsData;
+      setAllShipmentsdata(allData);
+    };
+  }, []);
+
+  return (
+    <>
+      <Services
+        setOpenProfile={setOpenProfile}
+        setCompleteModal={setCompleteModal}
+        setGetModal={setGetModal}
+        setStartModal={setStartModal}
+      />
+      <Table
+        setCreateShipmentModel={setCreateShipmentModel}
+        allShipmentsdata={allShipmentsdata}
+      />
+      <Form
+        createShipmentModel={createShipmentModel}
+        createShipment={createShipment}
+        setCreateShipmentModel={setCreateShipmentModel}
+      />
+      <Profile
+        openProfile={openProfile}
+        setOpenProfile={setOpenProfile}
+        currentUser={currentUser}
+        getShipmentCount={getShipmentCount}
+      />
+    </>
+  );
+};
