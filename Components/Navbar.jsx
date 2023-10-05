@@ -27,11 +27,13 @@ export default () => {
         }`}>
             <div className="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8">
                 <div className="flex items-center justify-between py-5 md:block">
+                <div class="transform transition-transform hover:scale-105">
                     <a href="javascript:void(0)">
                         <img src="https://www.floatui.com/logo.svg" width={120} height={50} alt="Float UI logo" />
                     </a>
+                </div>    
                     <div className="md:hidden">
-                        <button className="menu-btn text-gray-500 haver:text-gray-800" onClick={() => setState(!state)}> {state ? <Nav1 /> : <Nav2 />} </button>             
+                        <button className="menu-btn text-gray-500 hover:text-gray-800" onClick={() => setState(!state)}> {state ? <Nav1 /> : <Nav2 />} </button>             
                     </div>
                 </div>
                 <div className={`flex-1 items-center mt-8 md:mt-0 md:flex ${
@@ -40,25 +42,29 @@ export default () => {
                    <ul className="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
                       {navigation.map((item, idx) => {
                         return (
+                        <div class="transform transition-transform hover:scale-105">
                             <li key={idx} className="text-gray-500 hover:text-gray-900">
                                 <a href={item.path} className="block">
                                     {item.title}
                                 </a>
                             </li>
+                        </div>
                         )
                       })}
                     </ul> 
                     <div className="flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">
                         {currentUser ? (
-                            <p className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 haver:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">
+                            <p className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">
                                 {currentUser.slice(0, 25)}...
                             </p>
                         ) : (
+                        <div class="transform transition-transform hover:scale-105"> 
                           <button onClick={() => connectWallet()}
-                            className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 haver:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">
+                            className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">
                                 Connect Wallet
                                 <Nav3 />
                             </button>
+                        </div>
                         )}
                     </div>
                 </div>
