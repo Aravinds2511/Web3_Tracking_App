@@ -6,6 +6,7 @@ export default ({
         setCompleteModal,
         setGetModal,
         setStartModal,
+        setCreateShipmentModel,
 }) => {
     const team = [
         {
@@ -31,12 +32,14 @@ export default ({
     const openModalBox = (text) => {
         if (text === 1) {
             setCompleteModal(true);
-        }else if (test === 2){
+        }else if (text === 2){
             setGetModal(true);
-        }else if (test === 3){
+        }else if (text === 3){
             setStartModal(true);
-        }else if (test === 4){
+        }else if (text === 4){
             setOpenProfile(true);
+        }else if (text === 6){
+            setCreateShipmentModel(true);
         }
     };
     return(

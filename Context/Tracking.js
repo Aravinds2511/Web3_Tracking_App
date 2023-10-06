@@ -70,7 +70,7 @@ export const TrackingProvider = ({ children }) => {
   };
 
   //getting shipment count
-  const getShipmentCount = async () => {
+  const getShipmentsCount = async () => {
     try {
       if (!window.ethereum) return "Install MetaMask";
 
@@ -79,7 +79,7 @@ export const TrackingProvider = ({ children }) => {
       });
       const provider = new ethers.providers.JsonRpcProvider();
       const contract = fetchContract(provider);
-      const shipmentCount = await contract.getShipmentCount(accounts[0]);
+      const shipmentCount = await contract.getShipmentsCount(accounts[0]);
       return shipmentCount.toNumber();
     } catch (error) {
       console.log("error getting shipments", error);
@@ -106,10 +106,10 @@ export const TrackingProvider = ({ children }) => {
       const transaction = await contract.completeShipment(
         accounts[0],
         receiver,
-        index,
-        {
-          gasLimit: 300000,
-        }
+        index
+        // {
+        //   gasLimit: 300000,
+        // }
       );
 
       transaction.wait();
@@ -151,6 +151,8 @@ export const TrackingProvider = ({ children }) => {
 
   //for starting shipment
   const startShipment = async (getProduct) => {
+    console.log(getProduct);
+
     const { receiver, index } = getProduct;
 
     try {
@@ -226,7 +228,7 @@ export const TrackingProvider = ({ children }) => {
         completeShipment,
         getShipment,
         startShipment,
-        getShipmentCount,
+        getShipmentsCount,
         DappName,
         currentUser,
       }}

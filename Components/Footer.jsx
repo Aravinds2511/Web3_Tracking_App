@@ -27,8 +27,8 @@ export default () => {
                 <div className="justify-between sm:flex">
                     <div className="space-y-6">
                         <img src="https://www.floatui.com/logo.svg" className="w-32" />
-                        <p className="max-w-md">
-                            This is a tracking app for tracking the shipments and payments
+                        <p className="max-w">
+                            This a trading come trading app to send and receive your goods
                         </p>
                         <ul className="flex flex-wrap items-center gap-4 text-sm sm:text-base">
                             {footerNavs.map((item, idx) => (

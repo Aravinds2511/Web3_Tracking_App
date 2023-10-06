@@ -18,7 +18,7 @@ const index = () => {
     completeShipment,
     getShipment,
     startShipment,
-    getShipmentCount,
+    getShipmentsCount,
   } = useContext(TrackingContext);
 
   const [createShipmentModel, setCreateShipmentModel] = useState(false);
@@ -27,7 +27,7 @@ const index = () => {
   const [completeModal, setCompleteModal] = useState(false);
   const [getModal, setGetModal] = useState(false);
 
-  const [allShipmentsdata, setAllShipmentsdata] = useState(false);
+  const [allShipmentsdata, setAllShipmentsdata] = useState();
 
   useEffect(() => {
     const getCampaignsData = getAllShipment();
@@ -45,6 +45,7 @@ const index = () => {
         setCompleteModal={setCompleteModal}
         setGetModal={setGetModal}
         setStartModal={setStartModal}
+        setCreateShipmentModel={setCreateShipmentModel}
       />
       <Table
         setCreateShipmentModel={setCreateShipmentModel}
@@ -59,7 +60,7 @@ const index = () => {
         openProfile={openProfile}
         setOpenProfile={setOpenProfile}
         currentUser={currentUser}
-        getShipmentCount={getShipmentCount}
+        getShipmentsCount={getShipmentsCount}
       />
       <CompleteShipment
         completeModal={completeModal}

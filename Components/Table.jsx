@@ -1,5 +1,5 @@
 
-export default ({ setCreateShipmentModel, allShipmentdata }) => {
+export default ({ setCreateShipmentModel, allShipmentsdata }) => {
     const converTime = (time) => {
         const newTime = new Date(time);
         const dataTime = new Intl.DateTimeFormat("en-US", {
@@ -11,7 +11,7 @@ export default ({ setCreateShipmentModel, allShipmentdata }) => {
         return dataTime;
     }
 
-    console.log(allShipmentdata);
+    console.log(allShipmentsdata);
 
     return (
         <div className="max-w-screen-xl mx-auto px-4 md:px-8">
@@ -21,7 +21,7 @@ export default ({ setCreateShipmentModel, allShipmentdata }) => {
                         Create Tracking
                     </h3>
                     <p className="text-gray-600 mt-2">
-                    This is a tracking app for tracking the shipments and payments.
+                    View all the details regarding your orders in the table below...
                     </p>
                 </div>
                 <div className="mt-3 md:mt-0 transform transition-transform hover:scale-105">
@@ -48,8 +48,8 @@ export default ({ setCreateShipmentModel, allShipmentdata }) => {
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
-                        {allShipmentdata?.map((shipment, idk) => (
-                            <tr key={idx}>
+                        {allShipmentsdata?.map((shipment, idk) => (
+                            <tr key={idk}>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {shipment.sender.slice(0, 15)}...
                                 </td>
@@ -60,7 +60,7 @@ export default ({ setCreateShipmentModel, allShipmentdata }) => {
                                     {converTime(shipment.pickupTime)}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    {shipment.diatance} Km
+                                    {shipment.distance} Km
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {shipment.price}

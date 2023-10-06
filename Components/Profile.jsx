@@ -1,45 +1,46 @@
 
 import Image from "next/image";
+import { ethers } from "ethers";
+import { useEffect, useState } from "react";
 
 import images from "../Images/index";
-import { useEffect, useState } from "react";
 import { Str1 } from "../Components/index";
 
 export default ({
     openProfile,
     setOpenProfile,
     currentUser,
-    getShipmentCount,
+    getShipmentsCount,
 }) => {
     const [count, setCount] = useState();
+    const [balance, setBalance] = useState(null);
 
-
-    // useEffect(() => {
-    //     // Function to fetch the user's Ethereum balance using MetaMask provider
-    //     const fetchBalance = async () => {
-    //       if (window.ethereum) {
-    //         const provider = new ethers.providers.Web3Provider(window.ethereum);
-    //         const accounts = await window.ethereum.request({
-    //           method: "eth_requestAccounts",
-    //         });
-    //         const userAddress = accounts[0];
-    //         const userBalance = await provider.getBalance(userAddress);
-    //         const formattedBalance = ethers.utils.formatEther(userBalance);
-    //         setBalance(formattedBalance);
-    //       } else {
-    //         // Handle the case where MetaMask is not installed or not connected
-    //         console.error("MetaMask is not installed or not connected");
-    //       }
-    //     };
+    useEffect(() => {
+        // Function to fetch the user's Ethereum balance using MetaMask provider
+        const fetchBalance = async () => {
+          if (window.ethereum) {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const accounts = await window.ethereum.request({
+              method: "eth_requestAccounts",
+            });
+            const userAddress = accounts[0];
+            const userBalance = await provider.getBalance(userAddress);
+            const formattedBalance = ethers.utils.formatEther(userBalance);
+            setBalance(formattedBalance);
+          } else {
+            // Handle the case where MetaMask is not installed or not connected
+            console.error("MetaMask is not installed or not connected");
+          }
+        };
     
-    //     if (openProfile) {
-    //       fetchBalance(); // Fetch balance when the modal is open
-    //     }
-    //   }, [openProfile]);
+        if (openProfile) {
+          fetchBalance(); // Fetch balance when the modal is open
+        }
+      }, [openProfile]);
 
 
     useEffect(() => {
-        const getShipmentsData = getShipmentCount();
+        const getShipmentsData = getShipmentsCount();
 
         return async () => {
             const allData = await getShipmentsData;
@@ -67,32 +68,34 @@ export default ({
                           src={images.avatar}
                           alt="Bonnie image"
                         />
-                        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                        <h5 class="mb-1 text-xl font-medium text-gray-900 ">
                             Welcome Trader
                         </h5>  
-                    </div>
 
                     <span class="text-sm text-gray-500 dark:text-gray-400">
                         {currentUser}
                     </span>
 
-                    {/* {balance && (
-                      <div className="mt-4 text-xl font-medium text-gray-900 dark:text-white">
-                        Balance: {balance} ETH
-                      </div>
-                    )} */}
-
                     <div class="flex mt-4 space-x-3 md:mt-6">
-                        <a
+
+                        {balance && (
+                      <a href="#"
+                         class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-black rounded-lg border-2">
+                         Balance: {balance.slice(0, 8)}... ETH
+                      </a>
+                    )}
+
+                        {/* <a
                           href="#"
                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-black rounded-lg border-2">
-                            Balance: 345 ETH
-                          </a>
+                            Balance: ETH
+                          </a> */}
                           <a
                           href="#"
                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-black rounded-lg border-2">
                             Total Shipment: {count}
                           </a>
+                        </div>
                     </div>
                 </div>
             </div>
