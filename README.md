@@ -1,40 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Shipment Tracking DApp
+
+## Overview
+
+This decentralized application (DApp) allows users to create, start, and complete shipments on the Ethereum blockchain using Solidity smart contracts. The application is built with Next.js for the frontend, Solidity for the smart contracts, Tailwind CSS for styling, and ethers.js for Ethereum interactions.
+
+## Features
+
+- **Create Shipment:** Users can create a new shipment by providing necessary details such as sender, recipient, item description, etc.
+
+- **Start Shipment:** Shipment creators can initiate the shipment, marking it as 'in progress'.
+
+- **Complete Shipment:** Once the shipment is delivered, the sender can mark the shipment as 'completed'.
+
+## Prerequisites
+
+- Node.js installed on your local machine
+- Ethereum wallet (e.g., MetaMask) installed in your browser
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+
+    ```bash
+    git clone <repository-url>
+    cd shipment-tracking-dapp
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. Start the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+4. Visit `http://localhost:3000` in your browser to access the application.
+
+## Smart Contracts
+
+The smart contracts are written in Solidity and can be found in the `contracts/` directory. To deploy the smart contracts to the Ethereum blockchain, run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx hardhat run scripts/deploy.js --network localhost
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Make sure to configure your Ethereum network settings in the `hardhat.config.js` file.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Technologies Used
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- **Next.js:** A React framework for building server-rendered applications.
+- **Solidity:** A smart contract programming language for Ethereum.
+- **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
+- **ethers.js:** A library for interacting with Ethereum.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## License
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project is licensed under the [MIT License](LICENSE).
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
