@@ -6,12 +6,14 @@ import { Footer, Navbar } from "@/Components";
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
-      <TrackingProvider>
-        <Navbar />
-        <Component {...pageProps} />;
-      </TrackingProvider>
-      <Footer />
-    </>
+    <div className="bg-blue-300">
+      <>
+        <TrackingProvider>
+          <Navbar />
+          <Component {...pageProps} />;
+        </TrackingProvider>
+        <Footer />
+      </>
+    </div>
   );
 }
