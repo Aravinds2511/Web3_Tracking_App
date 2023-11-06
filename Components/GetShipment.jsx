@@ -66,9 +66,13 @@ export default ({ getModal, setGetModal, getShipment }) => {
                                 <p>Receiver: {singleShipmentData.receiver.slice(0, 25)}...</p>
                                 <p>PickupTime: {singleShipmentData.pickupTime}</p>
                                 <p>DeliveryTime: {singleShipmentData.deliveryTime}</p>
-                                <p>Distance: {singleShipmentData.deliveryTime}</p>
-                                <p>Price: {singleShipmentData.deliveryTime}</p>
-                                <p>Status: {singleShipmentData.deliveryTime}</p>
+                                <p>Distance: {singleShipmentData.distance}</p>
+                                <p>Price: {singleShipmentData.price}</p>
+                                <p>Status:  {singleShipmentData.status == 0
+                                      ? "Pending"
+                                      : singleShipmentData.status == 1
+                                      ? "In_Transit"
+                                      : "Delivered" }</p>
                                 <p>Paid:{" "} {singleShipmentData.isPaid ? "Complete" : "Not Complete"}</p>
                             </div>
                         )}
