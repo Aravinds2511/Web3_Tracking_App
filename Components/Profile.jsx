@@ -90,11 +90,11 @@ export default ({
                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-black rounded-lg border-2">
                             Balance: ETH
                           </a> */}
-                          <a
+                          {/* <a
                           href="#"
                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-black rounded-lg border-2">
                             Total Shipment: {count}
-                          </a>
+                          </a> */}
                         </div>
                     </div>
                 </div>
