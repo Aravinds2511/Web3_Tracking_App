@@ -17,29 +17,6 @@ This decentralized application (DApp) allows users to create, start, and complet
 - Node.js installed on your local machine
 - Ethereum wallet (e.g., MetaMask) installed in your browser
 
-## Getting Started
-
-1. Clone the repository:
-
-    ```bash
-    git clone <repository-url>
-    cd shipment-tracking-dapp
-    ```
-
-2. Install dependencies:
-
-    ```bash
-    npm install
-    ```
-
-3. Start the development server:
-
-    ```bash
-    npm run dev
-    ```
-
-4. Visit `http://localhost:3000` in your browser to access the application.
-
 ## Smart Contracts
 
 The smart contracts are written in Solidity and can be found in the `contracts/` directory. To deploy the smart contracts to the Ethereum blockchain, run:
