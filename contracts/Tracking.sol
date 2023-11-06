@@ -19,6 +19,7 @@ contract Tracking {
         bool isPaid;
     }
 
+    address public owner;
     mapping(address => Shipment[]) public shipments;
     uint256 public shipmentCount;
 
@@ -63,6 +64,7 @@ contract Tracking {
 
     constructor() {
         shipmentCount = 0;
+        owner = msg.sender;
     }
 
     // function for creating shipment
@@ -154,7 +156,7 @@ contract Tracking {
 
         uint256 amount = shipment.price;
 
-        payable(shipment.sender).transfer(amount);
+        payable(owner).transfer(amount);
 
         shipment.isPaid = true;
         typeShipment.isPaid = true;

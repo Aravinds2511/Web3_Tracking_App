@@ -40,6 +40,7 @@ export const TrackingProvider = ({ children }) => {
       );
       await createItem.wait();
       console.log(createItem);
+      window.location.reload();
     } catch (error) {
       console.log("Something went wrong", error);
     }
@@ -48,7 +49,9 @@ export const TrackingProvider = ({ children }) => {
   //getting all shipments
   const getAllShipment = async () => {
     try {
-      const provider = new ethers.providers.JsonRpcProvider();
+      const provider = new ethers.providers.JsonRpcProvider(
+        "https://eth-sepolia.g.alchemy.com/v2/7Qx1ObkUWFDGLcbThK7KwzvOlRsgqm6x"
+      );
       const contract = fetchContract(provider);
 
       const shipments = await contract.getAllTransactions();
@@ -77,7 +80,9 @@ export const TrackingProvider = ({ children }) => {
       const accounts = await window.ethereum.request({
         method: "eth_accounts",
       });
-      const provider = new ethers.providers.JsonRpcProvider();
+      const provider = new ethers.providers.JsonRpcProvider(
+        "https://eth-sepolia.g.alchemy.com/v2/7Qx1ObkUWFDGLcbThK7KwzvOlRsgqm6x"
+      );
       const contract = fetchContract(provider);
       const shipmentCount = await contract.getShipmentsCount(accounts[0]);
       return shipmentCount.toNumber();
@@ -114,6 +119,7 @@ export const TrackingProvider = ({ children }) => {
 
       transaction.wait();
       console.log(transaction);
+      window.location.reload();
     } catch (error) {
       console.log("error completing shipments", error);
     }
@@ -128,7 +134,9 @@ export const TrackingProvider = ({ children }) => {
       const accounts = await window.ethereum.request({
         method: "eth_accounts",
       });
-      const provider = new ethers.providers.JsonRpcProvider();
+      const provider = new ethers.providers.JsonRpcProvider(
+        "https://eth-sepolia.g.alchemy.com/v2/7Qx1ObkUWFDGLcbThK7KwzvOlRsgqm6x"
+      );
       const contract = fetchContract(provider);
       const shipment = await contract.getShipment(accounts[0], index * 1);
 
@@ -176,6 +184,7 @@ export const TrackingProvider = ({ children }) => {
 
       shipment.wait();
       console.log(shipment);
+      window.location.reload();
     } catch (error) {
       console.log("cannot start shipment", error);
     }
@@ -210,6 +219,7 @@ export const TrackingProvider = ({ children }) => {
       });
 
       setCurrentUser(accounts[0]);
+      window.location.reload();
     } catch (error) {
       console.log("cannot connect to wallet ", error);
     }
